@@ -1,0 +1,16 @@
+CREATE DATABASE peg_game;
+USE peg_game;
+
+CREATE TABLE player (
+    id BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    dt_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE game_match (
+    id BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
+    player_id BIGINT(20) NOT NULL,
+    movement VARCHAR(500) NULL,
+    dt_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (player_id) REFERENCES player(id)
+);
